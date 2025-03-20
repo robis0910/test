@@ -4,6 +4,7 @@ const app = express()
 
 //creates js objects from json data in response body
 app.use(express.json())
+app.use(express.static('dist'))
 
 app.use(cors())
 
@@ -27,8 +28,8 @@ let notes = [
 
 //gets
 app.get('/', (request, response) => {
-    response.send('<h1>Hello World!</h1>')
-  })
+  response.sendFile('/dist/index.html');
+});
 
 app.get('/api/notes', (request, response) => {
   response.json(notes)
